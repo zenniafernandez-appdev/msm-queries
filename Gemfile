@@ -56,6 +56,7 @@ group :development do
   gem 'rails_db', '2.3.1'
   gem 'rufo'
   gem 'htmlbeautifier'
+  gem 'solargraph'
 end
 
 group :test do
