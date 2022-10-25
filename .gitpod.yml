@@ -1,4 +1,4 @@
-image: patrickmckernin/msmqueries2022spring
+image: jelaniwoods/appdev2022-msm-queries
 
 tasks:
   - before: |
@@ -9,10 +9,8 @@ ports:
   - port: 9500-9999
     onOpen: ignore
 
-
 vscode:
   extensions:
     - vortizhe.simple-ruby-erb
     - mbessey.vscode-rufo
     - aliariff.vscode-erb-beautify
-    
