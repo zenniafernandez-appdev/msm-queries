@@ -1,0 +1,112 @@
+<h1>Director #<%= @the_director.id %> details</h1>
+
+<a href="/directors" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+
+&nbsp;|&nbsp;
+
+<a href="/delete_director/<%= @the_director.id %>" class="btn btn-block btn-outline-secondary">
+  Delete director
+  <small>(Building this link is not required. It's an optional stretch goal; but, you have the tools if you want to give it a try.)</small>
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @the_director.name %>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%= @the_director.dob %>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%= @the_director.bio %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="http://robohash.org/<%= @the_director.image %>">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@the_director.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@the_director.updated_at) %> ago
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Director
+    </th>
+
+    <th>
+    </th>
+  </tr>
+<% @filmography.each do |a_film| %>
+  <tr>
+    <td>
+      <%= a_film.id %>
+    </td>
+    <td>
+      <img src="http://robohash.org/<%= a_film.image %>?set=set4">
+    </td>
+    <td>
+      <%= a_film.title %>
+    </td>
+    <td>
+      <%= a_film.year %>
+    </td>
+    <td>
+      <% d = Director.where({ :id => a_film.director_id }).at(0) %>
+      <%= d.name %>
+    </td>
+    <td>
+      <a href="/movies/<%= a_film.id %>">Show details</a>
+    </td>
+  </tr>
+<% end %>
+</table>
